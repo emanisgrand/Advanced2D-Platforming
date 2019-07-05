@@ -5,7 +5,7 @@ using UnityEngine;
 public class Walk : AbstractBehavior
 {
     public float speed          =50f;
-    public float runMultiplier  = 2f;
+    public float runMultiplier  = 2f;  //multiplier
     // Start is called before the first frame update
     void Start()
     {
