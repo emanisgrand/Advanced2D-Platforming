@@ -2,32 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : AbstractBehavior
-{
-    public float jumpSpeed = 200;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class Jump : AbstractBehavior {
+    public float    jumpSpeed       = 200;
+    public float    jumpDelay       = 0.1f;
+    public int      jumpCount       = 2;
 
-    // Update is called once per frame
+    protected float lastJumpTime    = 0;
+    protected int   jumpsRemaining  = 0;
+
     void Update() {
         var canJump = inputState.GetButtonValue(inputButtons[0]);
         var holdTime = inputState.GetButtonHoldTime(inputButtons[0]);
         
         if (collisionState.standing) {
-            if (canJump && holdTime < .1f){      // the reason we don't test for 0 is-a small amount of time takes place 
-                OnJump();                         //from when the button is detected and changed on the input state, 
-                print(inputState.GetButtonHoldTime(0));                  //to when the jump script actually executes.
-            }                                    
-        }
+            if (canJump && holdTime < .1f) {       
+                jumpsRemaining = jumpCount -1;    
+                OnJump();                         
+            }                                     
+        } else {
+            if (canJump && holdTime               < 0.1f 
+                        && Time.time-lastJumpTime > jumpDelay) {
+                if (jumpsRemaining > 0) {
+                    OnJump();
+                    jumpsRemaining--;
+                }       
+            }
+         }
     }
-    protected virtual void OnJump(){
+    protected virtual void OnJump() {
         var vel = body2D.velocity;
-        // body.velocity = (x=velx, y=jumpSpeed)
+        lastJumpTime = Time.time;
         body2D.velocity = new Vector2(vel.x, jumpSpeed);
     }
 }
-// going to make a branch to track limiting the jump behavior
-// now we're actually working in a new branch; jumptracker
