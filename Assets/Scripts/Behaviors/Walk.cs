@@ -6,7 +6,8 @@ public class Walk : AbstractBehavior
 {
     public float speed          =50f;
     public float runMultiplier  = 2f;  //multiplier
-    // Start is called before the first frame update
+    public bool running;
+    
     void Start()
     {
         
@@ -15,6 +16,7 @@ public class Walk : AbstractBehavior
     // Update is called once per frame
     void Update()
     {
+        running = false;  // not running when we start
         // set up the states to be reachable
         var right = inputState.GetButtonValue(inputButtons[0]);
         var left = inputState.GetButtonValue(inputButtons[1]);
@@ -23,8 +25,9 @@ public class Walk : AbstractBehavior
         if (right || left){
             var tmpSpeed = speed; 
 
-            if (run && runMultiplier > 0){
+            if (run && runMultiplier > 0){  
                 tmpSpeed *= runMultiplier;
+                running = true; // now we're runninng!
             }
 
             var velX = tmpSpeed * (float)inputState.direction;   // convert the direction enum from the inputState to a float value.

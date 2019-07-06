@@ -245,6 +245,10 @@ MonoBehaviour:
     offValue: 0
     button: 4
     condition: 0
+  - axisName: Jump
+    offValue: 0
+    button: 5
+    condition: 0
   inputState: {fileID: 663478323}
 --- !u!4 &596028342
 Transform:
@@ -277,6 +281,8 @@ GameObject:
   - component: {fileID: 663478324}
   - component: {fileID: 663478325}
   - component: {fileID: 663478326}
+  - component: {fileID: 663478327}
+  - component: {fileID: 663478328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -445,6 +451,7 @@ MonoBehaviour:
   inputButtons: 000000000100000004000000
   speed: 50
   runMultiplier: 2
+  running: 0
 --- !u!114 &663478326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +464,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbfe6fe3f6f7db4287779836be21099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &663478327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663478317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f39a7986ef214c8803ffee241cc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  standing: 0
+  bottomPosition: {x: 0, y: -8.5}
+  collisionRadius: 3
+  debugCollisionColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &663478328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663478317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21e4efb80b7c9249832f2b1ff85651c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputButtons: 05000000
+  jumpSpeed: 200
 --- !u!1 &1392985564
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +600,7 @@ GameObject:
   - component: {fileID: 1804366834}
   - component: {fileID: 1804366833}
   - component: {fileID: 1804366832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
