@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 663478323}
   - component: {fileID: 663478324}
   - component: {fileID: 663478325}
+  - component: {fileID: 663478326}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -414,6 +415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  absVelX: 0
+  absVelY: 0
 --- !u!114 &663478324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +445,18 @@ MonoBehaviour:
   inputButtons: 000000000100000004000000
   speed: 50
   runMultiplier: 2
+--- !u!114 &663478326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663478317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbfe6fe3f6f7db4287779836be21099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1392985564
 GameObject:
   m_ObjectHideFlags: 0
