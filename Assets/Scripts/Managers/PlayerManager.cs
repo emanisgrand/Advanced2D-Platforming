@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
 
         animator.speed = walkBehavior.running ? walkBehavior.runMultiplier : 1;
     }
-
+    
     // Change the state of the animation based on the value being detected.
     void ChangeAnimationState(int value){
             animator.SetInteger("AnimState", value);
