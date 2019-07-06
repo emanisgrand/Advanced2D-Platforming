@@ -8,10 +8,12 @@ public abstract class AbstractBehavior : MonoBehaviour  //added the abstract key
 
     protected InputState inputState;  // private yet available to other classes that extend it
     protected Rigidbody2D body2D;
+    protected CollisionState collisionState;
 
     protected virtual void Awake() {
         inputState = GetComponent<InputState>();
         body2D = GetComponent<Rigidbody2D>();
+        collisionState = GetComponent<CollisionState>();
     }
 
     // Start is called before the first frame update

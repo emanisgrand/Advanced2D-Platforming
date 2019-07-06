@@ -7,11 +7,13 @@ public class PlayerManager : MonoBehaviour
     private InputState inputState;
     private Walk walkBehavior;
     private Animator animator;
+    private CollisionState collisionState;
 
     void Awake() {
         inputState = GetComponent<InputState>();
         walkBehavior = GetComponent<Walk>();
         animator = GetComponent<Animator>();
+        collisionState = GetComponent<CollisionState>();
     }       
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputState.absVelX == 0){
+        if (collisionState.standing){
             ChangeAnimationState(0);  
         }
 
@@ -30,6 +32,8 @@ public class PlayerManager : MonoBehaviour
         {
             ChangeAnimationState(1); // this will be set to our walk animation later.
         }
+
+        animator.speed = walkBehavior.running ? walkBehavior.runMultiplier : 1;
     }
 
     // Change the state of the animation based on the value being detected.
