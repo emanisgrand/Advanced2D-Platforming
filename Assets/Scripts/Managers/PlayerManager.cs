@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (collisionState.standing){
+        if (collisionState.standing){  // there may be times when the absolute value of X actually equals zero, if you're in the middle of a jump.
             ChangeAnimationState(0);  
         }
 
