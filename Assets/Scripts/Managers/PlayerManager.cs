@@ -24,14 +24,12 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (collisionState.standing){  // there may be times when the absolute value of X actually equals zero, if you're in the middle of a jump.
+        if (collisionState.standing)  // there may be times when the absolute value of X actually equals zero, if you're in the middle of a jump.
             ChangeAnimationState(0);  
-        }
-
         if (inputState.absVelX > 0)
-        {
-            ChangeAnimationState(1); // this will be set to our walk animation later.
-        }
+            ChangeAnimationState(1);  // this will be set to our walk animation later.
+        if (inputState.absVelY > 0)
+            ChangeAnimationState(2);  // Animator is set to transition the jump anim at this value
 
         animator.speed = walkBehavior.running ? walkBehavior.runMultiplier : 1;
     }
