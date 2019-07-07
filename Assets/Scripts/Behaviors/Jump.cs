@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : AbstractBehavior {
-    public float    jumpSpeed       = 200;
-    public float    jumpDelay       = 0.1f;
-    public int      jumpCount       = 2;
+    public float        jumpSpeed       = 200;
+    public float        jumpDelay       = 0.1f;
+    public int          jumpCount       = 2;
+    public GameObject   dustEffectPrefab;
 
-    protected float lastJumpTime    = 0;
-    protected int   jumpsRemaining  = 0;
+    protected float     lastJumpTime    = 0;
+    protected int       jumpsRemaining  = 0;
 
     void Update() {
         var canJump = inputState.GetButtonValue(inputButtons[0]);
@@ -25,6 +26,8 @@ public class Jump : AbstractBehavior {
                 if (jumpsRemaining > 0) {
                     OnJump();
                     jumpsRemaining--;
+                    var clone = Instantiate(dustEffectPrefab);
+                    clone.transform.position = transform.position;  //set to the same place as the plaeyr
                 }       
             }
          }
