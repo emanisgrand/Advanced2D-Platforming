@@ -31,8 +31,8 @@ public class LongJump : Jump
 
         if (canLongJump && !collisionState.standing && holdTime > longJumpDelay){
             var vel = body2D.velocity;
-            body2D.velocity = new Vector2 (vel.x, jumpSpeed * longJumpMultiplier);
-            canLongJump = false;
+            body2D.velocity = new Vector2 (vel.x, jumpSpeed * longJumpMultiplier); // this multiplier can be altered in the inspector.
+            canLongJump = false;                                                   // as it is, it's too jarring. figure out a way to smooth this
             isLongJumping = true;
         }
     }
