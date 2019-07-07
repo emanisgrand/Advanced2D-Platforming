@@ -11,7 +11,7 @@ public class Jump : AbstractBehavior {
     protected float     lastJumpTime    = 0;
     protected int       jumpsRemaining  = 0;
 
-    void Update() {
+    protected virtual void Update() {
         var canJump = inputState.GetButtonValue(inputButtons[0]);
         var holdTime = inputState.GetButtonHoldTime(inputButtons[0]);
         
