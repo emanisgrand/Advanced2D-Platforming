@@ -8,12 +8,14 @@ public class PlayerManager : MonoBehaviour
     private Walk walkBehavior;
     private Animator animator;
     private CollisionState collisionState;
+    private Duck duckState;
 
     void Awake() {
         inputState = GetComponent<InputState>();
         walkBehavior = GetComponent<Walk>();
         animator = GetComponent<Animator>();
         collisionState = GetComponent<CollisionState>();
+        duckState = GetComponent<Duck>();
     }       
     // Start is called before the first frame update
     void Start()
@@ -30,8 +32,10 @@ public class PlayerManager : MonoBehaviour
             ChangeAnimationState(1);  // this will be set to our walk animation later.
         if (inputState.absVelY > 0)
             ChangeAnimationState(2);  // Animator is set to transition the jump anim at this value
-
         animator.speed = walkBehavior.running ? walkBehavior.runMultiplier : 1;
+        if (duckState.ducking){
+            ChangeAnimationState(3);
+        }
     }
     
     // Change the state of the animation based on the value being detected.
