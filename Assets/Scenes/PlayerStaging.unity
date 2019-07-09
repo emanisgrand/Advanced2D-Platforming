@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputButtons: 0000000001000000
+  disableScripts: []
 --- !u!114 &663478325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputButtons: 000000000100000004000000
+  disableScripts: []
   speed: 50
   runMultiplier: 2
   running: 0
@@ -502,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputButtons: 05000000
+  disableScripts: []
   jumpSpeed: 200
   jumpDelay: 0.1
   jumpCount: 2
@@ -520,8 +523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputButtons: 05000000
+  disableScripts: []
   jumpSpeed: 150
-  jumpDelay: 0.5
+  jumpDelay: 0.2
   jumpCount: 2
   dustEffectPrefab: {fileID: 4298217138393534313, guid: aa7f0ad2f4c45854faa5cd02325f81a7,
     type: 3}
@@ -542,6 +546,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputButtons: 03000000
+  disableScripts:
+  - {fileID: 663478325}
+  - {fileID: 663478329}
   scale: 0.5
   centerOffsetY: 1
   ducking: 0

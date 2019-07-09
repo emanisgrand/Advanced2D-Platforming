@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class AbstractBehavior : MonoBehaviour  //added the abstract keyword. Not allowed to instantiate directly. Hides from search
 {
     public Buttons[] inputButtons;
+    public MonoBehaviour[] disableScripts; // we don't want our behaviors to actually know anything about other behaviors. All we want them to know is that at some point they can loop through all the scripts that are associated with it, and disable and enable them based on its own state
 
     protected InputState inputState;  // private yet available to other classes that extend it
     protected Rigidbody2D body2D;
@@ -16,15 +17,9 @@ public abstract class AbstractBehavior : MonoBehaviour  //added the abstract key
         collisionState = GetComponent<CollisionState>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    protected virtual void ToggleScripts (bool value){
+        foreach (var script in disableScripts) {  // Drag a script from the inspector to the array reference 
+            script.enabled = value;
+        }
     }
 }

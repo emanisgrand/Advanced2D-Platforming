@@ -22,6 +22,10 @@ public class Duck : AbstractBehavior {
     protected virtual void OnDuck (bool value){
         
         ducking = value;
+        // if we're ducking, and ducking is set to true, 
+        // we want to set the toggle scripts defaults. 
+        // If we're no longer ducking, we want to enable them.
+        ToggleScripts(!ducking);
 
         var size = circleCollider.radius;
         // allow us to switch between the two different sizes. 
