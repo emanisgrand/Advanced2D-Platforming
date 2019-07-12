@@ -39,6 +39,10 @@ public class PlayerManager : MonoBehaviour
         if (duckState.ducking){
             ChangeAnimationState(3);
         }
+        if (!collisionState.standing && collisionState.onWall){
+            ChangeAnimationState(4);
+        }
+
     }
     
     // Change the state of the animation based on the value being detected.

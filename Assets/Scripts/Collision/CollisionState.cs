@@ -8,7 +8,7 @@ public class CollisionState : MonoBehaviour
     public bool standing;
     public bool onWall;
     public Vector2 bottomPosition = Vector2.zero; // the position or the point in space we want to actually test for a collision
-     public Vector2 rightPosition = Vector2.zero;
+    public Vector2 rightPosition = Vector2.zero;
     public Vector2 leftPosition = Vector2.zero; 
     public float collisionRadius = 10f; // the distance around this point for us to test collision
     public Color debugCollisionColor = Color.red;
