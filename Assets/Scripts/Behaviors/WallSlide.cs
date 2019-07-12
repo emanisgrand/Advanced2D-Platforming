@@ -8,20 +8,32 @@ public class WallSlide : StickToWall
     // we want to increase the value of the slide velocity
     // so we create a multiplier to do that.
     public float slideMultiplier = 5f;
+    public GameObject dustPrefab;
+    public float dustSpawnDelay = 1.5f;    
     
+
+    private float timeElapsed = 0;
 
     override protected void Update() {
         base.Update();
 
-        if(onWallDetected) {
+        if(onWallDetected && !collisionState.standing) {
             var velY = slideVelocity;
 
-            // TODO: we always use the first input in the array. I'm not sure why
-            // I believe it's because we set the input in the inspector. In this case: down
             if (inputState.GetButtonValue(inputButtons[0]))
                 velY *= slideMultiplier;  // multiply the slide velocity. So -5*5=-25 which will speed it up.
 
             body2D.velocity = new Vector2(body2D.velocity.x, velY);
+
+            if(timeElapsed > dustSpawnDelay){
+                var dust = Instantiate(dustPrefab);
+                var pos = transform.position;
+                pos.y += 2;
+                dust.transform.position = pos;
+                dust.transform.localScale = transform.localScale;
+                timeElapsed = 0;
+            }
+            timeElapsed += Time.deltaTime;
         }
     }
     //disable gravity manipulation logic that we used to stick
@@ -32,7 +44,7 @@ public class WallSlide : StickToWall
 
     }
     override protected void OffWall(){
-        // this doesn't really do anything. this is just to continue disabling the logic deriving from 
-        // stick to wall
+        // reset the timer.
+        timeElapsed = 0;
     }
 }
