@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PowerUpFlower : Collectable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    // this is the item ID for the flower itself.
+    public int itmeID = 1;
+    // the parent class is empty so there's no need to call base.OnCollect here.
+    override protected void OnCollect(GameObject target){
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        var equipBehavior = target.GetComponent<Equip>();
         
+        if (equipBehavior != null){
+            equipBehavior.currentItem = itmeID;
+        }
     }
 }
