@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBall : MonoBehaviour {
-    public Vector2 initialVelocity = new Vector2 (100,-100);
+    public Vector2      initialVelocity = new Vector2 (100,-100);
+    public int          bounces         = 3;
     
     private Rigidbody2D body2D;
 
@@ -18,9 +19,15 @@ public class FireBall : MonoBehaviour {
         // This is how the fireball will move once it's instantiated.
         body2D.velocity = new Vector2 (startVelX, initialVelocity.y);
     }
+    
+    private void OnCollisionEnter2D(Collision2D target) {
+        //  if the object we're colliding with is lower than the fireball.
+        if (target.gameObject.transform.position.y < transform.position.y){
+            bounces--;
+        }   
 
-    // Update is called once per frame
-    void Update() {
-        
+        if (bounces <= 0){
+            Destroy(gameObject);
+        }
     }
 }
