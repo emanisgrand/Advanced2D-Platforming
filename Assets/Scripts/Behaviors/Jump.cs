@@ -21,9 +21,8 @@ public class Jump : AbstractBehavior {
                 OnJump();                         
             }                                     
         } else {
-            if (canJump && holdTime               < 0.1f 
-                        && Time.time-lastJumpTime > jumpDelay) {
-                if (jumpsRemaining > 0) {
+            if (canJump && holdTime < 0.1f && Time.time - lastJumpTime > jumpDelay) {
+                if (jumpsRemaining >= 0) {
                     OnJump();
                     jumpsRemaining--;
                     var clone = Instantiate(dustEffectPrefab);
@@ -32,9 +31,15 @@ public class Jump : AbstractBehavior {
             }
          }
     }
+
+    
+
     protected virtual void OnJump() {
         var vel = body2D.velocity;
         lastJumpTime = Time.time;
+        //? body2D.AddForce(new Vector2(0,jumpSpeed));
+        /* //* See also: notes in LongJump about AddForce */
         body2D.velocity = new Vector2(vel.x, jumpSpeed);
+        
     }
 }

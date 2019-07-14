@@ -6,14 +6,8 @@ public class LongJump : Jump
 {
     public float longJumpDelay      = 0.15f;
     public float longJumpMultiplier = 1.5f;
-    public bool canLongJump;
-    public bool isLongJumping;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool  canLongJump;
+    public bool  isLongJumping;
 
     // Update is called once per frame
     override protected void Update() {
@@ -31,9 +25,15 @@ public class LongJump : Jump
 
         if (canLongJump && !collisionState.standing && holdTime > longJumpDelay){
             var vel = body2D.velocity;
-            body2D.velocity = new Vector2 (vel.x, jumpSpeed * longJumpMultiplier); 
-            canLongJump = false;                                                   
+            body2D.velocity = new Vector2 (vel.x, jumpSpeed * longJumpMultiplier);
+            canLongJump = false;
             isLongJumping = true;
+            
+            //?body2D.AddForce(new Vector2(vel.x, jumpSpeed* longJumpMultiplier)); 
+            /* //* part of the problem with this approach is that the jumping is inconsistent. It seems to keep adding the force amount
+            * to every single jump so the jumps become inconsistent which can be cool for certian kind of game. It is interesting. Maybe the 
+            * ladybug box smasher I was thinking about? */
+            
         }
     }
 
