@@ -37,12 +37,6 @@ public class InputState : MonoBehaviour
         absVelY = Mathf.Abs(body2D.velocity.y);
     }
 
-    void Update() {
-        foreach(KeyValuePair<Buttons, ButtonState> state in buttonStates) { // KeyValuePair is used to iterate through the Dictionary list and return 
-            Debug.Log("Button State "+state.Key+" "+state.Value.value);  // the keys and values from the it. States are what we're going to name each key.
-        }    
-    }
-
     public void SetButtonValue(Buttons key, bool value){ // This is going to do all the heavy lifting. Tell it which key to check for 
         if (!buttonStates.ContainsKey(key))    //and whether or not it has been pressed.
             buttonStates.Add(key, new ButtonState());  // if the key doesn't exist, add it as a new button state.
@@ -54,8 +48,6 @@ public class InputState : MonoBehaviour
         } else if (state.value && value) {
             state.holdTime += Time.deltaTime;
         }
-
-        //TODO:🔬 I think this is how the values are being set.
         state.value = value;               
     }
 
