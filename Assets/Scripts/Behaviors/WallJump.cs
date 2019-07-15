@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class WallJump : AbstractBehavior
 {
-    public bool jumpingOffWall;
+    public bool     jumpingOffWall;
     public Vector2  jumpVelocity    = new Vector2(50, 200);
     public float    resetDelay      =.2f;
     
@@ -24,7 +24,7 @@ public class WallJump : AbstractBehavior
 
                 // the animation is set to look left so we're going to flip the direction its facing.
                 inputState.direction = inputState.direction == Directions.Right ? Directions.Left : Directions.Right;
-                // this will handle the actual movement.
+                // this will handle the actual movement. TODO: //*adjust jump so its not so jerky /
                 body2D.velocity = new Vector2(jumpVelocity.x * (float)inputState.direction, jumpVelocity.y);
             
                 ToggleScripts(false);
