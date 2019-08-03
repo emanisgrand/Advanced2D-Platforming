@@ -21,7 +21,7 @@ public enum Condition{           // This is what will hold all the Conditions. S
 public class InputAxisState {
     public string axisName;      // The actual name of the Axis. 
     public float offValue;       // We know axis states return to 0 when they're off so this is a float value.
-    public Buttons button;       // Unity class Buttons 
+    public Buttons button;       // The enums defined above.
     public Condition condition;  // A reference to our enum which will now be referred to as condition.
 
     public bool value{           // here we declare the boolean and call it value.
